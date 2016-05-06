@@ -1,3 +1,4 @@
+
 var int = setInterval(function(){ 
     update();
     draw();
@@ -9,25 +10,30 @@ function update() {
 }
 function draw() {
     
-    var textWidth = 0;
-    ctx.clearRect(0,0,width,height);
-    
-    for(i=0;i<options.length;i++){
-        ctx.fillText(options[i] + " ",100 + textWidth,100);
-        textWidth += 10;
-    }
-    
-    textWidth = 0;
-    
-    for(i = 0; i < currentInput.length; i++) {
-        ctx.fillText(currentInput[i] + " ", width/2 + textWidth, height/2);
-        textWidth += 10;
-    }
+
 }
 
 
-document.addEventListener("keyup", function(e){
-   console.log("pushed: " + e.keyCode);
-    currentInput.push(e.keyCode);
-    
+document.addEventListener("keyup", function(e) {
+    if(e.keyCode === 38) { //Up
+        if(input.index > 0) {
+            correntInput.index--;
+        }
+        else {
+            correntInput.index = options.length - 1;
+        }
+    }
+    if(e.keyCode === 40) { //Down
+        if(correntInput.index < options.length - 1) {
+            correntInput.index++;
+        }
+        else {
+            correntInput.index = 0;
+        }
+    }
+    if(e.keyCode === 32) { //Space
+        correntInput.value = options[correntInput.index];
+        answer.push(new input(correntInput.value,correntInput.index));
+        console.log(answer[answer.length -1]);
+    }
 });
