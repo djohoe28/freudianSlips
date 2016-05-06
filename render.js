@@ -27,7 +27,7 @@ function draw() {
 
 
 document.addEventListener("keyUp", function(e){
-   
+   console.log("pushed: " + e.keyCode);
     currentInput.push(e.keyCode);
     
 });
