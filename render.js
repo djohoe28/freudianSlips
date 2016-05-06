@@ -26,7 +26,7 @@ function draw() {
 }
 
 
-document.addEventListener("keyDown", function(e){
+document.addEventListener("keyUp", function(e){
    
     currentInput.push(e.keyCode);
     
