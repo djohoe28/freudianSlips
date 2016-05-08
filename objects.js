@@ -11,7 +11,9 @@ function input(value, index) {
 var keys = [],
     options = ["aaa", "aab", "bbb"],
     answer = [],
-     correntInput = new input(options[0],0);
+    correntInput = new input(options[0],0),
+    state = 0;
+    score = "none";
 
 
 
