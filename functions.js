@@ -15,4 +15,5 @@ function getScore(){
         default: score = "good enough"; break;
     }
 
+
 }

@@ -10,7 +10,7 @@ function update() {
         case 0: options = ["I","Cats","Johnatan"]; break;
         case 1: options = [" love"," are","'s"]; break;
         case 2: options = [" cookies"," awesome!"," mom"]; break;
-        case 3: var stop = false; while(!stop){ getScore(); stop = true;}; break;
+        case 3: getScore(); state++; break;
     }
 }
 function draw() {
