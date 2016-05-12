@@ -33,14 +33,17 @@ function exButton(value, sprite,x,y){
             currentInput.combo += this.value;
     }
 }
+function getPHeight(num){
+    return -0.00172266*num*num + 2.205*num - 165.6;
+}
+var O = new exButton("2", o, 160, 250),
+    E = new exButton("3", e, width*(0.5/7+(1*5/42)), getPHeight(width*(1/7+(1*5/42)))),
+    A = new exButton("1", a, width*(0.5/7+(2*5/42)), getPHeight(width*(1/7+(2*5/42)))),
+    L = new exButton("5", l, width*(0.5/7+(3*5/42)), getPHeight(width*(1/7+(3*5/42)))),
+    T = new exButton("4", t, width*(0.5/7+(4*5/42)), getPHeight(width*(1/7+(4*5/42)))),
+    F = new exButton("7", f, width*(0.5/7+(5*5/42)), getPHeight(width*(1/7+(5*5/42)))),
+    M = new exButton("6", m, width*(0.5/7+(6*5/42)), 250);
+    
 
-var A = new exButton("1", a, 0*width/7, 0*height / 4),
-    O = new exButton("2", o, 6*width/7, 0*height / 4),
-    E = new exButton("3", e, 1*width/7, 1*height / 4),
-    T = new exButton("4", t, 5*width/7, 1*height / 4),
-    L = new exButton("5", l, 2*width/7, 2*height / 4),
-    M = new exButton("6", m, 4*width/7, 2*height / 4),
-    F = new exButton("7", f, 3*width/7, 3*height / 4);
-
-var expressions = [A,O,E,T,L,M,F];
+var expressions = [O,E,A,L,T,F,M];
 
