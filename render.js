@@ -5,9 +5,9 @@ var int = setInterval(function(){
 
 function update() {
     switch(state){
-        case 0: options = [new input("I", 0, "133"), new input("Cats", 1, "34"), new input("Jonathan", 2, "2147")]; break;
-        case 1: options = [new input(" love", 0, "133"), new input(" are", 1, "34"), new input("'s", 2, "2147")]; break;
-        case 2: options = [new input(" cookies", 0, "133"), new input(" awesome", 1, "34"), new input(" mom", 2, "727")]; break;
+        case 0: options = [new input("I", 0, "322"), new input("Cats", 1, "235"), new input("Jonathan", 2, "14334")]; break;
+        case 1: options = [new input(" love", 0, "436"), new input(" are", 1, "34"), new input("'s", 2, "55")]; break;
+        case 2: options = [new input(" cookies", 0, "2122"), new input(" awesome", 1, "1617"), new input(" mom", 2, "616")]; break;
         case 3: var stop = false; while(!stop){ getScore(); stop = true;}; break;
     }
 }

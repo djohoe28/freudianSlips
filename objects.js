@@ -36,13 +36,13 @@ function exButton(value, sprite,x,y){
 function getPHeight(num){
     return -0.00172266*num*num + 2.205*num - 165.6;
 }
-var O = new exButton("2", o, 160, 250),
-    E = new exButton("3", e, width*(0.5/7+(1*5/42)), getPHeight(width*(1/7+(1*5/42)))),
-    A = new exButton("1", a, width*(0.5/7+(2*5/42)), getPHeight(width*(1/7+(2*5/42)))),
-    L = new exButton("5", l, width*(0.5/7+(3*5/42)), getPHeight(width*(1/7+(3*5/42)))),
-    T = new exButton("4", t, width*(0.5/7+(4*5/42)), getPHeight(width*(1/7+(4*5/42)))),
-    F = new exButton("7", f, width*(0.5/7+(5*5/42)), getPHeight(width*(1/7+(5*5/42)))),
-    M = new exButton("6", m, width*(0.5/7+(6*5/42)), 250);
+var O = new exButton("1", o, 175, 280),
+    E = new exButton("2", e, 260, 400),
+    A = new exButton("3", a, width*(0.5/7+(2*5/42)), getPHeight(width*(1/7+(2*5/42)))),
+    L = new exButton("4", l, width*(0.5/7+(3*5/42)), getPHeight(width*(1/7+(3*5/42)))),
+    T = new exButton("5", t, 690, 495),
+    F = new exButton("6", f, 800, 400),
+    M = new exButton("7", m, 910, 290);
     
 
 var expressions = [O,E,A,L,T,F,M];
