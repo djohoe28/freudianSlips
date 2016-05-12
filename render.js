@@ -1,3 +1,5 @@
+var mouseX = 0, mouseY = 0;
+
 var int = setInterval(function(){ 
     update();
     draw();
@@ -18,6 +20,7 @@ function draw() {
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
  
         for(i=0;i<expressions.length;i++){
+            ctx.fillText(expressions[i].value, expressions[i].x + 35, expressions[i].y - 20)
             expressions[i].draw();
         }
 }
@@ -55,4 +58,5 @@ document.addEventListener("mousemove", function(e){
     mouseY = mousePos.y;
     
 }, false);
+
 

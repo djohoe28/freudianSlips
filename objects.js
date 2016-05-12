@@ -33,17 +33,17 @@ function exButton(value, sprite,x,y){
             currentInput.combo += this.value;
     }
 }
-function getPHeight(num){
-    return -0.00172266*num*num + 2.205*num - 165.6;
-}
+
 var O = new exButton("1", o, 175, 280),
-    E = new exButton("2", e, 260, 400),
-    A = new exButton("3", a, width*(0.5/7+(2*5/42)), getPHeight(width*(1/7+(2*5/42)))),
-    L = new exButton("4", l, width*(0.5/7+(3*5/42)), getPHeight(width*(1/7+(3*5/42)))),
+    E = new exButton("2", e, 255, 395),
+    A = new exButton("3", a, 395, 500),
+    L = new exButton("4", l, 550, 540),
     T = new exButton("5", t, 690, 495),
-    F = new exButton("6", f, 800, 400),
+    F = new exButton("6", f, 810, 405),
     M = new exButton("7", m, 910, 290);
     
 
 var expressions = [O,E,A,L,T,F,M];
 
+console.log("xA = " + A.x + ", yA = " + A.y);
+console.log("xL = " + L.x + ", yL = " + L.y);
