@@ -1,8 +1,8 @@
-// main render function
 var game = setInterval(function(){ 
     update();
     draw();
 },1000/30);
+////////////////////////////////////
 
 function update() 
 {
@@ -14,64 +14,125 @@ function update()
         case 3: getScore(); break;
     }
 }
+////////////////////////////////////
+
 function draw() 
 {
+        ///canvas draw set
         ctx.clearRect(0,0,width,height);
         ctx.font = "18px Ariel";
         ctx.fillStyle = "#000";
+        //////////////////////////////////////////
+        //mouse position
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
- 
+        ///////////////////////////////////////////
+        //draw expressions
         for(i=0;i<expressions.length;i++)
         {
-            ctx.fillText(expressions[i].value, expressions[i].x + 35, expressions[i].y - 20)
+            ctx.fillText(expressions[i].value,
+                         expressions[i].x + 35,
+                         expressions[i].y - 20);
+            
             expressions[i].draw();
         }
-        var whiteSpace = 0;
+        ///////////////////////////////////////////
+        //draw options
+        var whiteSpace = 0,
+            whiteSpace2 = 0;
+
         for(i=0;i<options.length;i++)
         {
-            //fill text for all options
+           ctx.fillText(options[i].value, 450 + whiteSpace, 215);
+           ctx.fillText(options[i].combo, 450 + whiteSpace2, 315);
+           whiteSpace += 100;
+           whiteSpace2 += 100;
+        }
+        ///////////////////////////////////////////
+        //draw answer
+        whiteSpace = 0;
+        for(i=0;i<answer.length;i++)
+        {
+            ctx.fillText(answer[i].value, 450 + whiteSpace, 50);
+            whiteSpace += answer[i].value.length * 10;
         }
 }
 
-
-document.addEventListener("keyup", function(e) {
-    if(e.keyCode === 38) { //Up
-        if(currentInput.index > 0) {
+//////////////////////////////////////////////////
+//keyboard events
+document.addEventListener("keyup", function(e) 
+{
+    if(e.keyCode === 38) 
+    { //Up
+        if(currentInput.index > 0)
+        {
             currentInput.index -= 1;
         }
-        else {
+        else 
+        {
             currentInput.index = options.length - 1;
         }
     }
-    if(e.keyCode === 40) { //Down
-        if(currentInput.index < options.length - 1) {
+    
+    if(e.keyCode === 40) 
+    { //Down
+        if(currentInput.index < options.length - 1)
+        {
             currentInput.index++;
         }
-        else {
+        else 
+        {
             currentInput.index = 0;
         }
     }
-    if(e.keyCode === 32) { //Space
+    
+    if(e.keyCode === 32) 
+    { //Space
         UpdateAnswer();
         state++;
     }
 });
 
-document.addEventListener("mousemove", function(e){
-    
-    var mousePos = getMousePos(canvas, e);
+////////////////////////////////////////////////////
+//mouse events
+
+//mouse move
+canvas.addEventListener("mousemove", function(e)
+{
+// update mouse varibals
+var mousePos = getMousePos(canvas, e);
     mouseX = mousePos.x;
     mouseY = mousePos.y;
     
 }, false);
 
-document.addEventListener("click",function(){
+//mouse click
+canvas.addEventListener("click",function(){
    
-    for(i=0;i<expressions.length;i++){
-        if(onSelfCheck(expressions[i])){
+    for(i=0;i<expressions.length;i++)
+    {
+        if(onSelfCheck(expressions[i]))
+        {
             expressions[i].addInput();
         }
     }
     
 });
 
+//tap
+$('canvas').on('tap',function()
+{ debugger;
+    // update mouse varibals
+    var mousePos = getMousePos(canvas, e);
+        mouseX = mousePos.x;
+        mouseY = mousePos.y;
+    
+    //update currentInput 
+    for(i=0;i<expressions.length;i++)
+    {
+        if(onSelfCheck(expressions[i]))
+        {
+            expressions[i].addInput();
+        }
+    }
+    
+});

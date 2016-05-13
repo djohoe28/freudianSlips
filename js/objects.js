@@ -27,7 +27,7 @@ function input (value, index, combo)
 }
 //input objects
 var options = [];
-    currentInput = new input(null, null, "");
+    currentInput = new input("???", null, "");
     answer = [];
 ////////////////////////////////////////////////
 //expressions button constractur

@@ -54,17 +54,17 @@ function UpdateAnswer()
         if(options[i].combo===currentInput.combo)
         {
             currentInput.value = options[i].value;
+            break;
+        }
+        else
+        {
+            currentInput.value  = "???";   
         }
     }
     
     answer.push(
     new input (currentInput.value,currentInput.index,currentInput.combo)         
     );
-    
-    for(i=0;i<answer.length;i++)
-    {
-        console.log(answer[i].value);
-    }
     
     currentInput.clear();
 };
