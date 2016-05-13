@@ -18,16 +18,12 @@ function update()
     {
         if(currentInput.combo===options[i].combo)
         {
-            document.getElementById("debage")
-                    .innerHTML = currentInput.combo;
             UpdateAnswer();
             state++;
         }
-
     }
-    
 }
-////////////////////////////////////
+//////////////////////////////////////////////////
 
 function draw() 
 {
@@ -137,5 +133,11 @@ $('canvas').on('tap',function()
             }
         }
     }
+});
+
+$('document').on('swipe',function()
+{
+    debug.innerHTML = "whiped";
+    currentInput.clear(); 
 });
 

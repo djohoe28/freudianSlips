@@ -1,3 +1,6 @@
+//debuge for mobile
+var debug = document.getElementById("debug");
+/////////////////////////////////////////////////
 // game area setting
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
