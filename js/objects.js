@@ -61,16 +61,3 @@ var O = new exButton("1", o, 175, 280),
     M = new exButton("7", m, 910, 290);
 //expression button list    
 var expressions = [O,E,A,L,T,F,M];
-
-
-var button = 
-{
-    x: width/2 - this.width,
-    y: 10,
-    width: 150,
-    height: 50,
-    draw: function()
-    { 
-    ctx.fillRect(this.x,this.y,this.width,this.height);
-    }
-};

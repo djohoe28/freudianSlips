@@ -34,7 +34,6 @@ function draw()
         //////////////////////////////////////////
         //debuggin
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
-        button.draw();
         ///////////////////////////////////////////
         //draw expressions
         for(i=0;i<expressions.length;i++)
@@ -93,13 +92,6 @@ var mousePos = getMousePos(canvas, e);
 //mouse click
 canvas.addEventListener("click",function()
 { 
-    if(onSelfCheck(button))
-    {
-        UpdateAnswer();
-        state++;   
-    }
-    else
-    {
         for(i=0;i<expressions.length;i++)
         {
             if(onSelfCheck(expressions[i]))
@@ -107,19 +99,11 @@ canvas.addEventListener("click",function()
                 expressions[i].addInput();
             }
         }
-    }
 });
 
 //tap
 $('canvas').on('tap',function()
 { 
-    if(onSelfCheck(button))
-    {
-        UpdateAnswer();
-        state++;   
-    }
-    else
-    {
         // update mouse varibals
         var mousePos = getMousePos(canvas, e);
             mouseX = mousePos.x;
@@ -133,12 +117,11 @@ $('canvas').on('tap',function()
                 expressions[i].addInput();
             }
         }
-    }
 });
 
-$(document).on('pageinit', function(event)
+$("document").on('pageinit', function(event)
 {
-   $("canvas").swiperight(function()
+   $("canvas").swipeleft(function()
    {
         debug.innerHTML = "swiped";
         currentInput.clear();
