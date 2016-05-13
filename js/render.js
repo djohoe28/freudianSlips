@@ -136,8 +136,11 @@ $('canvas').on('tap',function()
     }
 });
 
-$("document").on("swipeleft",function(){
-  debug.innerHTML = "swiped";;
-    currentInput.clear(); 
+$(document).on('pageinit', function(event)
+{
+   $("canvas").swiperight(function()
+   {
+        debug.innerHTML = "swiped";
+        currentInput.clear();
+    });
 });
-
