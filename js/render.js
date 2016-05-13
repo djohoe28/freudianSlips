@@ -13,6 +13,16 @@ function update()
         case 2: options = [new input(" cookies", 0, "2122"), new input(" awesome", 1, "1617"), new input(" mom", 2, "616")]; break;
         case 3: getScore(); break;
     }
+    
+    for(i=0;i<options.length;i++)
+    {
+        if(currentInput.combo===options[i].combo)
+        {
+            
+        }
+
+    }
+    
 }
 ////////////////////////////////////
 
@@ -23,8 +33,9 @@ function draw()
         ctx.font = "18px Ariel";
         ctx.fillStyle = "#000";
         //////////////////////////////////////////
-        //mouse position
+        //debuggin
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
+        button.draw();
         ///////////////////////////////////////////
         //draw expressions
         for(i=0;i<expressions.length;i++)
@@ -61,34 +72,9 @@ function draw()
 //keyboard events
 document.addEventListener("keyup", function(e) 
 {
-    if(e.keyCode === 38) 
-    { //Up
-        if(currentInput.index > 0)
-        {
-            currentInput.index -= 1;
-        }
-        else 
-        {
-            currentInput.index = options.length - 1;
-        }
-    }
-    
-    if(e.keyCode === 40) 
-    { //Down
-        if(currentInput.index < options.length - 1)
-        {
-            currentInput.index++;
-        }
-        else 
-        {
-            currentInput.index = 0;
-        }
-    }
-    
     if(e.keyCode === 32) 
     { //Space
-        UpdateAnswer();
-        state++;
+        currentInput.clear();
     }
 });
 
@@ -107,32 +93,50 @@ var mousePos = getMousePos(canvas, e);
 
 //mouse click
 canvas.addEventListener("click",function(){
-   
-    for(i=0;i<expressions.length;i++)
+    if(onSelfCheck(button))
     {
-        if(onSelfCheck(expressions[i]))
+        UpdateAnswer();
+        state++;   
+    }
+    else
+    {
+        for(i=0;i<expressions.length;i++)
         {
-            expressions[i].addInput();
+            if(onSelfCheck(expressions[i]))
+            {
+                expressions[i].addInput();
+                var debage = document.getElementById("debage");
+                debage.innerHTML = currentInput.combo;
+            }
         }
     }
-    
 });
 
 //tap
 $('canvas').on('tap',function()
-{ debugger;
-    // update mouse varibals
-    var mousePos = getMousePos(canvas, e);
-        mouseX = mousePos.x;
-        mouseY = mousePos.y;
-    
-    //update currentInput 
-    for(i=0;i<expressions.length;i++)
+{ 
+    if(onSelfCheck(button))
     {
-        if(onSelfCheck(expressions[i]))
+        UpdateAnswer();
+        state++;   
+    }
+    else
+    {
+        // update mouse varibals
+        var mousePos = getMousePos(canvas, e);
+            mouseX = mousePos.x;
+            mouseY = mousePos.y;
+
+        //update currentInput 
+        for(i=0;i<expressions.length;i++)
         {
-            expressions[i].addInput();
+            if(onSelfCheck(expressions[i]))
+            {
+                expressions[i].addInput();
+                var debage = document.getElementById("debage");
+                debage.innerHTML = currentInput.combo;
+            }
         }
     }
-    
 });
+
