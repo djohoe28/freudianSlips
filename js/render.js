@@ -91,7 +91,8 @@ var mousePos = getMousePos(canvas, e);
 }, false);
 
 //mouse click
-canvas.addEventListener("click",function(){
+canvas.addEventListener("click",function()
+{ 
     if(onSelfCheck(button))
     {
         UpdateAnswer();
@@ -135,9 +136,8 @@ $('canvas').on('tap',function()
     }
 });
 
-$('document').on('swipe',function()
-{
-    debug.innerHTML = "whiped";
+$("document").on("swipeleft",function(){
+  debug.innerHTML = "swiped";;
     currentInput.clear(); 
 });
 
