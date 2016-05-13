@@ -18,7 +18,10 @@ function update()
     {
         if(currentInput.combo===options[i].combo)
         {
-            
+            document.getElementById("debage")
+                    .innerHTML = currentInput.combo;
+            UpdateAnswer();
+            state++;
         }
 
     }
@@ -105,8 +108,6 @@ canvas.addEventListener("click",function(){
             if(onSelfCheck(expressions[i]))
             {
                 expressions[i].addInput();
-                var debage = document.getElementById("debage");
-                debage.innerHTML = currentInput.combo;
             }
         }
     }
@@ -133,8 +134,6 @@ $('canvas').on('tap',function()
             if(onSelfCheck(expressions[i]))
             {
                 expressions[i].addInput();
-                var debage = document.getElementById("debage");
-                debage.innerHTML = currentInput.combo;
             }
         }
     }
