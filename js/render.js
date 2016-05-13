@@ -101,6 +101,7 @@ canvas.addEventListener("click",function()
         }
 });
 
+/*
 //tap
 $('canvas').on('tap',function()
 { 
@@ -127,3 +128,4 @@ $("document").on('pageinit', function(event)
         currentInput.clear();
     });
 });
+*/
