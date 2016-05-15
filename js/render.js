@@ -34,7 +34,7 @@ function draw()
         //////////////////////////////////////////
         //debuggin
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
-        ///////////////////////////////////////////
+        //////////////////////////////////////////
         //draw expressions
         for(i=0;i<expressions.length;i++)
         {
@@ -58,12 +58,17 @@ function draw()
         }
         ///////////////////////////////////////////
         //draw answer
-        whiteSpace = 0;
-        for(i=0;i<answer.length;i++)
-        {
-            ctx.fillText(answer[i].value, 450 + whiteSpace, 50);
-            whiteSpace += answer[i].value.length * 10;
+        if(state!==3){
+            whiteSpace = 0;
+            for(i=0;i<answer.length;i++)
+            {
+                ctx.fillText(answer[i].value, 450 + whiteSpace, 50);
+                whiteSpace += answer[i].value.length * 10;
+            }
+        }else{
+            ctx.fillText(score,250,50);
         }
+        ////////////////////////////////////////////      
 }
 
 //////////////////////////////////////////////////

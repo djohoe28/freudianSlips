@@ -24,7 +24,7 @@ function onSelfCheck(object)
 ///////////////////////////////////////////////
 //final update score
 function getScore()
-{
+{  
     var mistakes = 0;
     
     for(i=0; i<answer.length; i++)
