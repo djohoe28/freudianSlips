@@ -3,26 +3,20 @@ var game = setInterval(function(){
     draw();
 },1000/30);
 
-
 ////////////////////////////////////
 function update() 
-{
-    switch(state)
-    {
-        case 0: options = [new input("I", 0, "322"), new input("Cats", 1, "235"), new input("Jonathan", 2, "14334")]; break;
-        case 1: options = [new input(" love", 0, "436"), new input(" are", 1, "34"), new input("'s", 2, "55")]; break;
-        case 2: options = [new input(" cookies", 0, "2122"), new input(" awesome", 1, "1617"), new input(" mom", 2, "616")]; break;
-        case 3: getScore(); break;
-    }
-    
-    for(i=0;i<options.length;i++)
-    {
-        if(currentInput.combo===options[i].combo)
+{ 
+        phase0();
+
+        for(i=0;i<options.length;i++)
         {
-            UpdateAnswer();
-            state++;
+            if(currentInput.combo.join()===options[i].combo.join())
+            { 
+                currentInput.index = options[i].index;
+                UpdateAnswer();
+                state++;
+            }
         }
-    }
 }
 //////////////////////////////////////////////////
 
@@ -32,9 +26,15 @@ function draw()
         ctx.clearRect(0,0,width,height);
         ctx.font = "18px Ariel";
         ctx.fillStyle = "#000";
+    
         //////////////////////////////////////////
         //debuggin
         ctx.fillText(mouseX + "," + mouseY,30 ,30);
+    
+        //////////////////////////////////////////
+        //draw life
+        ctx.fillText("patient status: " + patient.life, 10, height - 10);
+    
         //////////////////////////////////////////
         //draw expressions
         for(i=0;i<expressions.length;i++)
@@ -45,6 +45,7 @@ function draw()
             
             expressions[i].draw();
         }
+    
         ///////////////////////////////////////////
         //draw options
         var whiteSpace = 0,
@@ -57,6 +58,7 @@ function draw()
            whiteSpace += 100;
            whiteSpace2 += 100;
         }
+    
         ///////////////////////////////////////////
         //draw answer
         if(state!==3){
@@ -69,6 +71,7 @@ function draw()
         }else{
             ctx.fillText(score,250,50);
         }
+    
         ////////////////////////////////////////////      
 }
 
@@ -88,6 +91,7 @@ document.addEventListener("keyup", function(e)
 //mouse move
 canvas.addEventListener("mousemove", function(e)
 {
+    
 // update mouse varibals
 var mousePos = getMousePos(canvas, e);
     mouseX = mousePos.x;
@@ -106,32 +110,3 @@ canvas.addEventListener("click",function()
             }
         }
 });
-
-/*
-//tap
-$('canvas').on('tap',function()
-{ 
-        // update mouse varibals
-        var mousePos = getMousePos(canvas, e);
-            mouseX = mousePos.x;
-            mouseY = mousePos.y;
-
-        //update currentInput 
-        for(i=0;i<expressions.length;i++)
-        {
-            if(onSelfCheck(expressions[i]))
-            {
-                expressions[i].addInput();
-            }
-        }
-});
-
-$("document").on('pageinit', function(event)
-{
-   $("canvas").swipeleft(function()
-   {
-        debug.innerHTML = "swiped";
-        currentInput.clear();
-    });
-});
-*/

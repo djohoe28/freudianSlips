@@ -32,39 +32,55 @@ function getScore()
         if(answer[i-1]!== undefined)
         {
             if(answer[i-1].index!==answer[i].index)
-            {
+            { 
                 mistakes++;
         }
     }
 }
     switch(mistakes)
     {
-        case 0: score = "perfect!"; break;
-        case options.length - 1: score = "well... you'r suck"; break;
-        default: score = "good enough"; break;
+        case 0: score = 20; break;
+        case options.length - 1: score = 0; break;
+        default: score = 10; break;
     }
-
+    patient.life += score;
+    state = 0;
+    phase++;
 };
+
 ////////////////////////////////////////////////
 // when pushing spacebar
 function UpdateAnswer()
-{    
+{  
     for(i=0;i<options.length;i++)
-    {
-        if(options[i].combo===currentInput.combo)
-        {
-            currentInput.value = options[i].value;
-            break;
-        }
-        else
-        {
-            currentInput.value  = "???";   
-        }
+    { 
+            if(options[i].combo.join()===currentInput.combo.join())
+            { 
+                currentInput.value = options[i].value;
+                break;
+            }
+            else
+            {
+                currentInput.value  = "???";   
+            }
     }
     
     answer.push(
-    new input (currentInput.value,currentInput.index,currentInput.combo)         
+    new input (currentInput.value, currentInput.index, currentInput.combo)         
     );
     
     currentInput.clear();
 };
+
+/////////////////////////////////////////////////
+//options update
+function phase0 ()
+{
+    switch(state)
+    {
+        case 0: options = [new input("I", 0, [3,2,2]), new input("Cats", 1, [2,3,5]), new input("Jonathan", 2, [1,4,3,3,4])]; break;
+        case 1: options = [new input(" love", 0, [1,3,6]), new input(" are", 1, [4,3]), new input("'s", 2, [5,5])]; break;
+        case 2: options = [new input(" cookies", 0, [2,1,2,2]), new input(" awesome", 1, [1,6,5,6]), new input(" mom", 2, [6,1,6])]; break;
+        case 3: options = []; getScore(); break;
+    }
+}
