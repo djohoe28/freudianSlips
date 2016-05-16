@@ -34,7 +34,8 @@ var options = [];
     answer = [];
 ////////////////////////////////////////////////
 //expressions button constractur
-function exButton(value, sprite,x,y){
+function exButton(value, sprite,x,y)
+{
     this.onSelf = false;
     this.value = value;
     this.sprite = sprite;
@@ -61,3 +62,9 @@ var O = new exButton("1", o, 175, 280),
     M = new exButton("7", m, 910, 290);
 //expression button list    
 var expressions = [O,E,A,L,T,F,M];
+//////////////////////////////////////////////
+var patient = {
+  
+    
+    
+};

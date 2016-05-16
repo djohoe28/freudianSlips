@@ -2,8 +2,9 @@ var game = setInterval(function(){
     update();
     draw();
 },1000/30);
-////////////////////////////////////
 
+
+////////////////////////////////////
 function update() 
 {
     switch(state)
