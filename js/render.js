@@ -5,9 +5,13 @@ var game = setInterval(function(){
 
 ////////////////////////////////////
 function update() 
-{ 
-        phase0();
-
+{
+        switch(phase)
+        {
+            case 0: phase0(); break;
+            case 1: /*phase1();*/ break;
+        }
+    
         for(i=0;i<options.length;i++)
         {
             if(currentInput.combo.join()===options[i].combo.join())
@@ -53,9 +57,20 @@ function draw()
 
         for(i=0;i<options.length;i++)
         {
-           ctx.fillText(options[i].value, 450 + whiteSpace, 215);
-           ctx.fillText(options[i].combo, 450 + whiteSpace2, 315);
-           whiteSpace += 100;
+           if(realTimeUpdate(i))
+           {  //debugger;
+               ctx.font = "32px Ariel Bold";
+           }
+           else
+           {
+               ctx.font = "18px Ariel";
+           }
+           /*if(options[i] !== undefined)
+           {*/
+            ctx.fillText(options[i].value, 450 + whiteSpace, 215);
+            ctx.fillText(options[i].combo, 450 + whiteSpace2, 315);
+           //}
+            whiteSpace += 100;
            whiteSpace2 += 100;
         }
     
@@ -82,6 +97,7 @@ document.addEventListener("keyup", function(e)
     if(e.keyCode === 32) 
     { //Space
         currentInput.clear();
+        phase = 0;
     }
 });
 
